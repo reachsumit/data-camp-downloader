@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+  "name": "DataCamp Downloader",
+  "version": "0.1",
+  "short_name": "DataCamp Downloader",
+  "description": "Bulk download video files from DataCamp Courses.",
+  
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "html/popup.html",
+	 "default_title": "Downloader for DataCamp Videos!"
+  },
+  
+  "icons": { "16": "images/icon16.png",
+           "48": "images/icon48.png",
+          "128": "images/icon128.png" },
+  
+  "content_scripts": [
+  {
+    "matches": [
+      "*://*.datacamp.com/*"
+    ],
+    "js": ["scripts/jquery-3.3.1.min.js","scripts/content_datacamp.js"],
+    "run_at": "document_end"
+  }
+],
+  "permissions": [
+    "tabs","downloads"
+   ],
+  
+  "background": {
+    "scripts": ["scripts/events.js"]
+  }
+}
